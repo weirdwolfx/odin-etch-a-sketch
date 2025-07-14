@@ -10,8 +10,9 @@ function getRandomColor() {
 }
 
 
-// number of squares per side
-const squarePerSide = 16;
+const squarePerSide = 16; // number of squares per side
+const pauseKey = 'p'; // key to press to enable/disable pen
+const darkenIndex = 0.1; // factor by which you want to darken grid squares
 
 const squareContainer = document.querySelector('.container');
 const colorPallete = document.querySelector('.color-choices');
@@ -46,7 +47,7 @@ function disablePen() {
 
 // allows user to pause/disable the pen by pressing the key 'p'
 function togglePen(e) {
-    if (e.key != 'p') return;
+    if (e.key != pauseKey) return;
 
     // if pen is enabled, grid has an attribute of 'pen'
     if (squareContainer.hasAttribute('pen')) {
@@ -60,13 +61,37 @@ function togglePen(e) {
     squareContainer.toggleAttribute('pen');
 }
 
+
 document.addEventListener('keypress', togglePen);
+colorPallete.addEventListener('click', setPenColor);
+
+
+// default pen color
+let penColor = 'white';
+
+
+// user can change pen color by clicking on the colour options in the side menu
+function setPenColor(e) {
+    if (e.target.className != 'color') return;
+    penColor = e.target.id;
+}
 
 
 // what to do when hovering over the grid squares
 function changeBoxColor(e) {
     if (e.target.className != 'square') return;
-    console.log('I am stepping on box');
+
+    switch(penColor) {
+        case 'random':
+            e.target.style.backgroundColor = getRandomColor();
+            break;
+        case 'darken':
+            // lower the opacity
+            e.target.style.opacity = getComputedStyle(e.target).opacity - darkenIndex;
+            break;
+        default:
+            e.target.style.backgroundColor = penColor;
+    }
 }
 
 makeGrid();

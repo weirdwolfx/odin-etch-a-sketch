@@ -39,13 +39,13 @@ body {
     background-color:beige;
 }
 
-.color > div,
+.color,
 #darken > img {
     width: 20px;
     height: 20px;
 }
 
-.color {
+.color-choices > div {
     display: flex;
 }
 
