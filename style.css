@@ -16,7 +16,7 @@ body {
 /* GRID */
 
 .container,
-.color-choices {
+.sidebar {
     height: 700px;
 }
 
@@ -27,7 +27,7 @@ body {
     width: 700px;
     padding: 3px;
     background-color: #d0d0d0;
-    border: 3px outset;
+    border: 4px outset;
     border-right: none;
 }
 
@@ -37,6 +37,23 @@ body {
     border: 0.25px outset #d0d0d0;
 }
 
+/* SIDEBAR */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #d0d0d0;
+    border: 4px outset;
+    border-left: 4px;
+    padding: 1.25em;
+}
+
+.pen-info {
+    width: 15ch;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
 /* COLOR PALLETE */
 
 .color-choices {
@@ -44,12 +61,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.125em;
-    width: 200px;
-    background-color: #d0d0d0;
-    padding: 1em;
-    border: 3px outset;
     font-size: 1.25rem;
-    border-left: 4px;
 }
 
 .color {
@@ -94,4 +106,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 90%;
+    font-weight: bold;
 }
