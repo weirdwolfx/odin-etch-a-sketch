@@ -10,7 +10,7 @@ function getRandomColor() {
 }
 
 
-const squarePerSide = 16; // number of squares per side
+const squarePerSide = 32; // number of squares per side
 const pauseKey = 'p'; // key to press to enable/disable pen
 const darkenIndex = 0.1; // factor by which you want to darken grid squares
 
