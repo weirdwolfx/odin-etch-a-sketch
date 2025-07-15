@@ -6,7 +6,6 @@
 
 body {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -42,6 +41,7 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #d0d0d0;
     border: 4px outset;
     border-left: 4px;
@@ -108,4 +108,38 @@ body {
     align-items: center;
     font-size: 90%;
     font-weight: bold;
+}
+
+/* FORM */
+
+form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+form > * {
+    font-size: 1.2rem;
+}
+
+#grid-size {
+    padding: 0.3em;
+    flex-grow: 1;
+    border: 2px inset;
+    box-shadow: inset 2px 2px 2px #2b2a2a;
+    font-size: 1.1em;
+}
+
+#submit-btn {
+    padding: 0.2em;
+    border: 3px outset;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+}
+
+#submit-btn:active {
+    border: 3px inset;
 }
