@@ -37,11 +37,13 @@ function makeGrid() {
 // allow the user to draw on the grid
 function enablePen() {
     squareContainer.addEventListener('mouseover', changeBoxColor);
+    document.body.style.cursor = "url(./images/paintbrush.png) 4 28, default";
 }
 
 
 function disablePen() {
     squareContainer.removeEventListener('mouseover', changeBoxColor);
+    document.body.style.cursor = "default";
 }
 
 
