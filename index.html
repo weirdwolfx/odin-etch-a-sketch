@@ -49,9 +49,12 @@
 
         <div class="pen-info">Press 'P' to enable/disable pen</div>
 
-        <form>
-            <input type="number" id="grid-size" placeholder="Grid size (1-100)" min="1" max="100" required>
-            <input type="submit" id="submit-btn">
+        <form class="grid-form">
+            <div class="user-input">
+                <input type="number" id="grid-input" placeholder="Grid size (1-100)">
+                <p class="error" id="grid-input-error"></p>
+            </div>
+            <button type="submit" id="submit-btn" formtarget="_self">Reset Grid</button>
         </form>
     </div>
 </body>

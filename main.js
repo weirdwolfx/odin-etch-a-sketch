@@ -1,3 +1,31 @@
+const squarePerSide = 32; // number of squares per side
+const pauseKey = 'p'; // key to press to enable/disable pen
+const darkenIndex = 0.1; // factor by which you want to darken grid squares
+const maxGridSize = 100; 
+const minGridSize = 1;
+let penColor = 'white'; // default pen color
+
+
+const squareContainer = document.querySelector('.container');
+const colorPallete = document.querySelector('.color-choices');
+const randomColorPen = document.querySelector('#random');
+const darkenColorPen = document.querySelector('#darken');
+const form = document.querySelector('.grid-form');
+
+
+// Error Messages
+const emptyInput = 'Input cannot be empty';
+const invalidGridSize = `Enter a number from ${minGridSize} to ${maxGridSize}`;
+
+
+document.addEventListener('keypress', togglePen);
+colorPallete.addEventListener('click', setPenColor);
+form.addEventListener('submit', resetGrid);
+
+
+makeGrid(squarePerSide);
+
+
 // return random integer from 0 to n
 function random(n) {
     return Math.floor(Math.random() * (n + 1));
@@ -10,24 +38,14 @@ function getRandomColor() {
 }
 
 
-const squarePerSide = 32; // number of squares per side
-const pauseKey = 'p'; // key to press to enable/disable pen
-const darkenIndex = 0.1; // factor by which you want to darken grid squares
-
-const squareContainer = document.querySelector('.container');
-const colorPallete = document.querySelector('.color-choices');
-const randomColorPen = document.querySelector('#random');
-const darkenColorPen = document.querySelector('#darken');
-
-
 // form a grid of side length = squarePerSide
-function makeGrid() {
-    for (let i = 0; i < squarePerSide * squarePerSide; i++) {
+function makeGrid(gridSize) {
+    for (let i = 0; i < gridSize * gridSize; i++) {
         const squareGrid = document.createElement("div");
         squareGrid.classList.add("square")
 
-        squareGrid.style.width = `${100 / squarePerSide}%`;
-        squareGrid.style.height = `${100 / squarePerSide}%`;
+        squareGrid.style.width = `${100 / gridSize}%`;
+        squareGrid.style.height = `${100 / gridSize}%`;
 
         squareContainer.appendChild(squareGrid);
     }
@@ -64,14 +82,6 @@ function togglePen(e) {
 }
 
 
-document.addEventListener('keypress', togglePen);
-colorPallete.addEventListener('click', setPenColor);
-
-
-// default pen color
-let penColor = 'white';
-
-
 // user can change pen color by clicking on the colour options in the side menu
 function setPenColor(e) {
     if (e.target.className != 'color') return;
@@ -96,5 +106,46 @@ function changeBoxColor(e) {
     }
 }
 
-makeGrid();
 
+// displays error message' for element, by appending 'message' to the <p> tag who is sibling of the input
+function displayErrorMessage(element, message) {
+    (element.parentNode).querySelector('p').textContent = message;
+}
+
+
+// erase the grid
+function clearGrid() {
+    squareContainer.innerHTML = '';
+}
+
+
+// make a grid of size given by user
+function resetGrid(e) {
+    e.preventDefault();
+
+    // function will return false if input is invalid, else the value
+    const gridSize = validateGridSizeInput(form.elements['grid-input'].value);
+
+    if (gridSize) {
+
+        // make input entry blank 
+        form.elements['grid-input'].value = '';
+        clearGrid();
+        makeGrid(gridSize);
+    }
+}
+
+
+// check if grid size is a valid number
+function validateGridSizeInput(size) {
+    if (size <= maxGridSize && size >= minGridSize) {
+        return size;
+    }
+    else if (size.trim() == '') {
+        displayErrorMessage(form.elements['grid-input'], emptyInput);
+    }
+    else {
+        displayErrorMessage(form.elements['grid-input'], invalidGridSize);
+    }
+    return false;
+}
