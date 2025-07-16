@@ -98,12 +98,33 @@ function changeBoxColor(e) {
             e.target.style.backgroundColor = getRandomColor();
             break;
         case 'darken':
-            // lower the opacity
-            e.target.style.opacity = getComputedStyle(e.target).opacity - darkenIndex;
+
+            // increase the darkness of square
+            let newDarkness = extractBrightness(getComputedStyle(e.target).filter) - darkenIndex;
+            e.target.style.filter = `brightness(${newDarkness})`;
             break;
         default:
             e.target.style.backgroundColor = penColor;
     }
+}
+
+
+// takes a string of type 'brightness(number)' and function returns the number
+function extractBrightness(filterProperties) {
+    let brightnessValue;
+    filterProperties.split(' ').forEach( property => {
+        if (property.startsWith('brightness')) {
+            let brightness = property.slice(('brightness(').length, -1); // format: 'brightness(x)' always
+
+            // brightness could be decimal, integer or percentage
+            // it's fine if it's decimal or integer, but for percentage we must convert it to decimal
+            if (brightness.endsWith('%')) {
+                brightness = brightness.slice(0, -1) / 100;
+            }
+            brightnessValue = parseFloat(brightness);
+        }
+    })
+    return brightnessValue;
 }
 
 

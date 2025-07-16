@@ -35,6 +35,7 @@ body {
     border-radius: 3px;
     background-color: white;
     border: 0.25px outset #d0d0d0;
+    filter: brightness(1);
 }
 
 /* SIDEBAR */
