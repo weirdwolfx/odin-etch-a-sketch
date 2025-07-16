@@ -67,7 +67,7 @@ function disablePen() {
 
 // allows user to pause/disable the pen by pressing the key 'p'
 function togglePen(e) {
-    if (e.key != pauseKey) return;
+    if (e.key.toLowerCase() != pauseKey) return;
 
     // if pen is enabled, grid has an attribute of 'pen'
     if (squareContainer.hasAttribute('pen')) {
