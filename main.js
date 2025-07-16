@@ -130,6 +130,8 @@ function resetGrid(e) {
 
         // make input entry blank 
         form.elements['grid-input'].value = '';
+
+        clearErrorMessage(form.elements['grid-input']);       
         clearGrid();
         makeGrid(gridSize);
     }
@@ -148,4 +150,9 @@ function validateGridSizeInput(size) {
         displayErrorMessage(form.elements['grid-input'], invalidGridSize);
     }
     return false;
+}
+
+
+function clearErrorMessage(element) {
+    (element.parentNode).querySelector('p').textContent = '';
 }
