@@ -66,11 +66,15 @@ body {
     font-size: 1.25rem;
 }
 
+.color,
+.darken-white {
+    box-shadow: inset 1.75px 1.75px;
+}
+
 .color {
     width: 25px;
     height: 25px;
     border: 3px ridge;
-    box-shadow: inset 1.75px 1.75px;
 }
 
 .color-choices>div {
@@ -98,8 +102,13 @@ body {
     background-color: orange;
 }
 
-#white {
+#white,
+.darken-white {
     background-color: white;
+}
+
+.darken-black {
+    background-color: black;
 }
 
 #random,
@@ -110,6 +119,12 @@ body {
     align-items: center;
     font-size: 90%;
     font-weight: bold;
+}
+
+.darken-black,
+.darken-white {
+    width: 50%;
+    height: 100%;
 }
 
 /* FORM */
