@@ -85,7 +85,14 @@ function togglePen(e) {
 // user can change pen color by clicking on the colour options in the side menu
 function setPenColor(e) {
     if (e.target.className != 'color') return;
+    const previouslySelectedColor = document.querySelector('.selected-color');
+
+    // if any color was previously selected, un-select that color
+    if (previouslySelectedColor) {
+        previouslySelectedColor.classList.remove('selected-color');
+    }
     penColor = e.target.id;
+    e.target.parentNode.classList.add('selected-color');
 }
 
 

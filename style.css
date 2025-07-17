@@ -66,20 +66,18 @@ body {
     font-size: 1.25rem;
 }
 
-.color,
-.darken-white {
-    box-shadow: inset 1.75px 1.75px;
-}
-
 .color {
     width: 25px;
     height: 25px;
     border: 3px ridge;
+    box-shadow: inset 1.75px 1.75px;
 }
 
 .color-choices>div {
     display: flex;
+    padding: 0.1em;
     gap: 0.3em;
+    width: 15ch;
 }
 
 #red {
@@ -102,29 +100,34 @@ body {
     background-color: orange;
 }
 
-#white,
-.darken-white {
+#white {
     background-color: white;
-}
-
-.darken-black {
-    background-color: black;
 }
 
 #random,
 #darken {
-    background-color: lightgrey;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#random {
+    background-color: lightgrey;
     font-size: 90%;
     font-weight: bold;
 }
 
-.darken-black,
-.darken-white {
-    width: 50%;
-    height: 100%;
+#darken {
+    background-color: white;
+
+    /* .color width is 19px (due to border-box and 3px border), so 50% of 19 is 9.5 */
+    box-shadow: inset -9.5px 0px,
+                inset 1.75px 1.75px;
+}
+
+.selected-color {
+    border: 3px outset;
+    background-color: rgb(230, 230, 230);
 }
 
 /* FORM */
