@@ -43,13 +43,16 @@ function getRandomColor() {
 // form a grid of side length = squarePerSide
 function makeGrid(gridSize) {
     for (let i = 0; i < gridSize * gridSize; i++) {
-        const squareGrid = document.createElement("div");
-        squareGrid.classList.add("square")
+        const square = document.createElement("div");
+        square.classList.add("square")
 
-        squareGrid.style.width = `${100 / gridSize}%`;
-        squareGrid.style.height = `${100 / gridSize}%`;
+        // while making new grid, if grid show is enabled, add class
+        if (checkbox.checked) square.classList.add('grid-enable');
 
-        squareContainer.appendChild(squareGrid);
+        square.style.width = `${100 / gridSize}%`;
+        square.style.height = `${100 / gridSize}%`;
+
+        squareContainer.appendChild(square);
     }
 }
 
