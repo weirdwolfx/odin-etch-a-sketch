@@ -103,7 +103,7 @@ function setPenColor(e) {
 
 // what to do when hovering over the grid squares
 function changeBoxColor(e) {
-    if (e.target.className != 'square') return;
+    if (e.target.className == 'container') return;
 
     switch(penColor) {
         case 'random':
