@@ -31,10 +31,13 @@ body {
     border-right: none;
 }
 
-.square {
-    border-radius: 3px;
-    background-color: white;
+.grid-enable {
     border: 0.25px outset #d0d0d0;
+    border-radius: 3px;
+}
+
+.square {
+    background-color: white;
     filter: brightness(1);
 }
 
@@ -171,4 +174,17 @@ form {
     border: 3px inset;
     background-color: #d0d0d0;
     box-shadow: inset 1px 1px 1px;
+}
+
+.toggle-grid {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding-block: 0.15em;
+}
+
+#grid-checkbox {
+    width: 1rem;
+    height: 1rem;
 }

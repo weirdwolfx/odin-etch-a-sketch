@@ -11,6 +11,7 @@ const colorPallete = document.querySelector('.color-choices');
 const randomColorPen = document.querySelector('#random');
 const darkenColorPen = document.querySelector('#darken');
 const form = document.querySelector('.grid-form');
+const checkbox = document.querySelector('#grid-checkbox');
 
 
 // Error Messages
@@ -21,6 +22,7 @@ const invalidGridSize = `Enter a number from ${minGridSize} to ${maxGridSize}`;
 document.addEventListener('keypress', togglePen);
 colorPallete.addEventListener('click', setPenColor);
 form.addEventListener('submit', resetGrid);
+checkbox.addEventListener('click', toggleGrid);
 
 
 makeGrid(squarePerSide);
@@ -183,4 +185,17 @@ function validateGridSizeInput(size) {
 
 function clearErrorMessage(element) {
     (element.parentNode).querySelector('p').textContent = '';
+}
+
+
+// user can choose to show/hide the grid
+function toggleGrid() {
+    (squareContainer.childNodes).forEach(square => {
+        if (checkbox.checked) {
+            square.classList.add('grid-enable');
+        }
+        else {
+            square.classList.remove('grid-enable');
+        }
+    })
 }
