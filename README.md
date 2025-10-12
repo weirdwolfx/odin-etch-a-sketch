@@ -2,6 +2,10 @@
 
 Let your creative and drawing skills out with this fun little game!
 
+
+<img src="./images/live-preview.png" width="600">
+<img src="./images/live-preview2.png" width="600">
+
 Providing a user-friendly interface, this project has many features:
 
 ## 1. Colours 
