@@ -117,9 +117,7 @@ function changeBoxColor(e) {
             break;
         default:
             e.target.style.backgroundColor = penColor;
-            if (penColor == 'white') {
-                e.target.style.filter = `brightness(1)`;
-            }
+            e.target.style.filter = `brightness(1)`;
     }
 }
 
